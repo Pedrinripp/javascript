@@ -1,0 +1,150 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #b4cfe8e0;
+}
+
+.barra-menu{
+    background-color:  rgb(112, 141, 173);
+    height: 50px;
+    width: 100%;
+
+}
+
+.barra-menu p {
+    position: absolute;
+    font-size: 23px;
+    margin-top: 13px;
+    margin-left: 10px;
+    font-family: Arial, sans-serif; 
+}
+
+.icon-fast-note{
+    position: absolute;
+    margin-top: 2px;
+    margin-left: 120px;
+    height: 40px;
+    width: 40px;
+}
+
+.img-perfil{
+    height: 40px;
+    width: 43px;
+    margin-top: 5px;
+    margin-left: 1230px;
+    cursor: pointer;
+}
+.img-perfil:hover {
+    background-color: rgba(245, 245, 245, 0.123);
+    border-radius: 33px;
+    border: 100px;
+}
+
+.dados_perfil{
+    height: 250px;
+    width: 267px;
+    left: 933px;
+    padding-left: 55px;
+    background-color: rgb(23, 111, 211);
+    border: 0.5px solid wheat;
+    border-radius: 13px;
+    position: absolute;
+    display: none;
+    font-family: Arial, sans-serif; 
+    z-index: 1;
+}
+
+.btn-close{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    margin-left: 230px;
+}
+
+.btn-close:hover{
+
+    border-radius: 42px;
+    background-color: rgba(0, 0, 0, 0.356);
+
+}
+
+.img-usuario{
+    height: 70px;
+    width: 70px;
+    margin-left: 70px;
+    border: 2px solid #91bae1e0;
+    border-radius: 42px;
+}
+
+.dados_perfil button{
+    background-color: #91bae1e0;
+    height: 33px;
+    width: 160px;
+    margin-left: 28px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 42px;
+    cursor: pointer;
+}
+
+.dados_perfil button:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.dados_perfil p{
+    margin-left: 28px;
+}
+
+.text-titulo{
+    width: 800px;
+}
+
+.text-titulo-2{
+    width: 700px;
+    top: 203px;
+    left: 22px;
+    position: absolute;
+}
+.text-titulo-3{
+    width: 400px;
+    z-index: 0;
+    left: 882px;
+    position: absolute;
+}
+
+.text-titulo-4{
+    width: 260px;
+    top: 413px;
+    left: 482px;
+    position: absolute;
+}
+
+.criar-nota-btn{
+    background: linear-gradient(45deg, rgb(23, 111, 211), #91bae1e0);
+    height: 93px;
+    width: 260px;
+    margin-left: 50px;
+    margin-top: 360px;
+    border: 2px solid rgb(112, 141, 173);
+    border-radius: 42px;
+    font-size: 17px;
+    font-family: Arial, sans-serif; 
+    cursor: pointer;
+    position: absolute;
+    animation: move 2s infinite alternate;
+    transition: transform 0.3s;
+}
+
+.criar-nota-btn:hover{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    transform: scale(1.1);
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}

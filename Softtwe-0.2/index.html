@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/index.css">
+        <script src="/funcao.js"></script>
+        <link rel="shortcut icon" href="/img/icon- nota.png">
+        <title>Fast Note</title>
+    </head>
+<body>
+    <div class="barra-menu">
+        <img src="/img/icon-adicionar (2).png" class="adicionar" alt="Adicionar nota" onclick="mostrar_esconder('nota')">
+        <img src="/img/icon-usuario.png" alt="Usuario" class="usuario" onclick="mostrar_esconder('perfil')">
+
+        <div class="bem-vindo">{{user.name}}</div>
+    </div>
+
+    <main class="dados_perfil" id="perfil">
+        
+        <img src="img/icon-fechar.png" alt="Fechar" button type="button" class="btn-close"  onclick="esconder_mostrar('perfil')"></button>
+        <p>pedro</p> <!-- no lugar desses dados <p> colocar as tegs para vir os dados do usuario-->
+        <p>cpf ***.***.***-52</p>
+        <p>usuario online</p>
+    </main>
+
+    <main>
+        <form id="note-form" action="/front/notes" , method="post">
+            <div class="bloco-nota" id="nota">
+                <p> Nova nota</p> 
+                <input type="hidden" name="token" value="{{ token }}">
+                <label for="title"></label>
+                <input type="text" id="title" name="title" placeholder="Insira seu titulo">
+                <label for="note"></label>
+                <textarea type="text" id="note" name="note" placeholder="Insira seu texto..."></textarea>
+                <button type="submit" value="Submit" id="salvar"><b><i>Salvar</i></b></button>
+
+                <button class="indic" type="submit" id="editar" disabled><b><i>Editar</i></b></button>
+            </div>
+
+        </form>
+    </main>
+    
+    <div class="main-titulo-lista">
+        <p class="titulo-lista-nota">Lista de Notas</p>
+    </div>
+
+    <div class="Lista-de-Notas">
+
+    {% for note in notes %}
+
+        <li>{{ note.title }}: {{ note.text }} -- [{{note.created_at}}] -- {{note.id}}
+            <form  action="/front/delete-note/{{note.id}}" method="post" style="display:inline;"></li>
+                
+            <br>
+            <input type="hidden" name="_method" value="delete">
+            
+            <input type="hidden" name="token" value="{{ token }}">
+            
+            <button id="excluir" type="submit"><b>Excluir</b> </button>
+            <button id="excluir" class="edit-note" data-id="{{note.id}}" data-title="{{note.title}}" data-text="{{note.text}}" type="button"><b>Editar</b></button>
+            <hr>
+        </form>
+
+        
+            
+            
+         
+    {% else %}
+        <li>Não existe notas ainda!!</li>
+        
+        
+    {% endfor %}
+    
+    </div>
+    
+</ul>
+
+
+<!--
+<script>
+    
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+        alert('Você precisa estar logado para acessar esta página!');
+        window.location.href = '/login'; 
+    } else {
+        
+        fetch('/front/current-user', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao obter informações do usuário');
+            }
+            return response.json();
+        })
+        .then(data => {
+            
+            document.getElementById('user-info').innerText = `Usuário: ${data.username}`;
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            
+        });
+    }
+    window.addEventListener('beforeunload', function() {
+    document.getElementById('note-form').reset(); 
+});
+/*function deleteNote(noteId) {
+        if (confirm('Você tem certeza que deseja excluir essa nota?')) {
+            fetch(`/front/notes/${noteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao deletar a nota');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.message);  
+                window.location.reload();  
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao deletar a nota');
+            });
+        }
+    }*/
+    
+    
+</script>
+-->
+
+
+</body>
+</html>
